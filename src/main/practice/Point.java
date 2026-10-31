@@ -1,6 +1,5 @@
 package practice;
 
-import java.util.Objects;
 
 /**
  * A grid coordinate with an x and a y. Two points are equal when both
@@ -30,6 +29,7 @@ public class Point {
 
   @Override
   public int hashCode() {
-    return Objects.hash(x, y);
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
   }
 }
