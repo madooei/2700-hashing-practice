@@ -1,9 +1,9 @@
 package practice;
 
-
 /**
  * A grid coordinate with an x and a y. Two points are equal when both
- * coordinates match, and equal points have equal hash codes.
+ * coordinates match. The hash code is computed from both coordinates, so equal
+ * points have equal hash codes.
  */
 public class Point {
 
@@ -25,11 +25,5 @@ public class Point {
     }
     Point other = (Point) o;
     return x == other.x && y == other.y;
-  }
-
-  @Override
-  public int hashCode() {
-    // TODO: Implement me
-    throw new UnsupportedOperationException("TODO: Implement me");
   }
 }
