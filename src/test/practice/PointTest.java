@@ -5,6 +5,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -15,8 +16,43 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PointTest {
 
   @Test
+  public void equalsIsTrueForSameCoordinates() {
+    assertTrue(new Point(3, 4).equals(new Point(3, 4)));
+  }
+
+  @Test
+  public void equalsIsFalseWhenOnlyXDiffers() {
+    assertFalse(new Point(3, 4).equals(new Point(5, 4)));
+  }
+
+  @Test
+  public void equalsIsFalseWhenOnlyYDiffers() {
+    assertFalse(new Point(3, 4).equals(new Point(3, 5)));
+  }
+
+  @Test
+  public void equalsIsFalseForNull() {
+    assertFalse(new Point(3, 4).equals(null));
+  }
+
+  @Test
+  public void equalsIsFalseForAnotherClass() {
+    assertFalse(new Point(3, 4).equals("(3, 4)"));
+  }
+
+  @Test
   public void equalPointsShareHashCode() {
     assertEquals(new Point(3, 4).hashCode(), new Point(3, 4).hashCode());
+  }
+
+  @Test
+  public void hashCodeIsComputedFromX() {
+    assertNotEquals(new Point(3, 4).hashCode(), new Point(5, 4).hashCode());
+  }
+
+  @Test
+  public void hashCodeIsComputedFromY() {
+    assertNotEquals(new Point(3, 4).hashCode(), new Point(3, 5).hashCode());
   }
 
   @Test
@@ -39,20 +75,5 @@ public class PointTest {
     labels.put(new Point(3, 4), "start");
     labels.put(new Point(3, 4), "finish");
     assertEquals(1, labels.size());
-  }
-
-  @Test
-  public void equalsIsTrueForSameCoordinates() {
-    assertTrue(new Point(3, 4).equals(new Point(3, 4)));
-  }
-
-  @Test
-  public void equalsIsFalseForDifferentCoordinates() {
-    assertFalse(new Point(3, 4).equals(new Point(4, 3)));
-  }
-
-  @Test
-  public void equalsIsFalseForNull() {
-    assertFalse(new Point(3, 4).equals(null));
   }
 }

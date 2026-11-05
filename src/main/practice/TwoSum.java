@@ -12,8 +12,6 @@ public final class TwoSum {
 
   // Assumes exactly one pair of different elements adds up to target.
   // Returns the indices of that pair, smaller index first.
-  // Walks the array once, looking up each element's complement in a map
-  // from value to index.
   public static int[] twoSum(int[] nums, int target) {
     Map<Integer, Integer> seen = new TreeMap<>();  // value -> index
 
@@ -30,7 +28,6 @@ public final class TwoSum {
 
   // Assumes exactly one pair of different elements adds up to target.
   // Returns the indices of that pair, smaller index first.
-  // Checks every pair with two nested loops.
   public static int[] twoSumBruteForce(int[] nums, int target) {
     for (int i = 0; i < nums.length - 1; i++) {
       for (int j = i + 1; j < nums.length; j++) {

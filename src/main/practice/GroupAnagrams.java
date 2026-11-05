@@ -17,7 +17,6 @@ public final class GroupAnagrams {
   // Returns the words grouped so that two words share a group exactly when
   // they are anagrams. The order of the groups, and of the words in a group,
   // is not specified.
-  // Keys a map on each word's sorted letters, its canonical form.
   public static List<List<String>> groupAnagrams(String[] words) {
     Map<String, List<String>> groups = new TreeMap<>();
 
@@ -45,7 +44,6 @@ public final class GroupAnagrams {
   // Returns the words grouped so that two words share a group exactly when
   // they are anagrams. The order of the groups, and of the words in a group,
   // is not specified.
-  // Compares each word with the first word of every group made so far.
   public static List<List<String>> groupAnagramsPairwise(String[] words) {
     List<List<String>> groups = new ArrayList<>();
 

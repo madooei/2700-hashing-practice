@@ -4,15 +4,26 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Tests for the Two Sum problem on an unsorted array. Each test is one
- * scenario from the notes. The scenarios are written once here; each solution
- * gets its own subclass that says which method to call, so you can run the
- * suite for one solution at a time.
+ * Tests for the Two Sum problem on an unsorted array. The scenarios are written
+ * once here; each solution gets its own subclass that says which method to
+ * call, so you can run the suite for one solution at a time.
  */
 public abstract class TwoSumTest {
 
   // Calls the solution under test.
   protected abstract int[] twoSum(int[] nums, int target);
+
+  @Test
+  public void twoElements() {
+    int[] nums = {4, 6};
+    assertPair(0, 1, twoSum(nums, 10));
+  }
+
+  @Test
+  public void pairAtTheFront() {
+    int[] nums = {2, 7, 11, 15};
+    assertPair(0, 1, twoSum(nums, 9));
+  }
 
   @Test
   public void pairInTheMiddleAndAtTheEnd() {
@@ -27,9 +38,9 @@ public abstract class TwoSumTest {
   }
 
   @Test
-  public void twoElements() {
-    int[] nums = {4, 6};
-    assertPair(0, 1, twoSum(nums, 10));
+  public void zeroTarget() {
+    int[] nums = {4, 0, -4, 9};
+    assertPair(0, 2, twoSum(nums, 0));
   }
 
   @Test
@@ -42,18 +53,6 @@ public abstract class TwoSumTest {
   public void anElementIsNotPairedWithItself() {
     int[] nums = {5, 1, 5};
     assertPair(0, 2, twoSum(nums, 10));
-  }
-
-  @Test
-  public void pairAtTheFront() {
-    int[] nums = {2, 7, 11, 15};
-    assertPair(0, 1, twoSum(nums, 9));
-  }
-
-  @Test
-  public void zeroTarget() {
-    int[] nums = {4, 0, -4, 9};
-    assertPair(0, 2, twoSum(nums, 0));
   }
 
   // Asserts that actual is a two-element array holding the expected indices.

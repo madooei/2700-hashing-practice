@@ -4,7 +4,8 @@ import java.util.Objects;
 
 /**
  * A grid coordinate with an x and a y. Two points are equal when both
- * coordinates match, and equal points have equal hash codes.
+ * coordinates match. The hash code is computed from both coordinates, so equal
+ * points have equal hash codes.
  */
 public class Point {
 
