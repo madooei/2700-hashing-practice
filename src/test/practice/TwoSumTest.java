@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for the Two Sum problem on an unsorted array. The scenarios are written
- * once here; each solution gets its own subclass that says which method to
+ * once here; each solution gets its own subclass that says which class to
  * call, so you can run the suite for one solution at a time.
  */
 public abstract class TwoSumTest {

@@ -7,6 +7,6 @@ public class GroupAnagramsPairwiseTest extends GroupAnagramsTest {
 
   @Override
   protected List<List<String>> groupAnagrams(String[] words) {
-    return GroupAnagrams.groupAnagramsPairwise(words);
+    return GroupAnagramsPairwise.groupAnagrams(words);
   }
 }

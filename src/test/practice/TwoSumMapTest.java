@@ -5,6 +5,6 @@ public class TwoSumMapTest extends TwoSumTest {
 
   @Override
   protected int[] twoSum(int[] nums, int target) {
-    return TwoSum.twoSum(nums, target);
+    return TwoSumMap.twoSum(nums, target);
   }
 }

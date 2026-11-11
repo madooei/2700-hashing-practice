@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for the Group Anagrams problem. The scenarios are written once here;
- * each solution gets its own subclass that says which method to call, so you
+ * each solution gets its own subclass that says which class to call, so you
  * can run the suite for one solution at a time.
  *
  * Neither the order of the groups nor the order of the words in a group is
