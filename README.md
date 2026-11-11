@@ -20,8 +20,10 @@ code/
       practice/
         Point.java                      # a grid coordinate with equals and hashCode
         PointDemo.java                  # demo of Point as a HashMap key
-        TwoSum.java                     # one pass with a map, and brute force
-        GroupAnagrams.java              # key by canonical form, and compare pairwise
+        TwoSumBruteForce.java           # check every pair
+        TwoSumMap.java                  # one pass with a map
+        GroupAnagramsPairwise.java      # compare each word with every group
+        GroupAnagramsCanonicalForm.java # key a map on each word's sorted letters
       map/
         Map.java                        # the Map ADT
         TreeMap.java                    # the AVL tree map from the TreeMap chapter
@@ -50,13 +52,15 @@ code/
 
 Two Sum and Group Anagrams have no demo; the tests are how you check your work.
 
-Each problem's scenarios live in one abstract test class (`TwoSumTest`, `GroupAnagramsTest`). The small classes that extend it do nothing but say which method to call, so the same scenarios run against every solution without being copied.
+Each problem's scenarios live in one abstract test class (`TwoSumTest`, `GroupAnagramsTest`). The small classes that extend it do nothing but say which class to call, so the same scenarios run against every solution without being copied.
 
 ## What's here
 
 - `practice.Point` — a grid coordinate. Two points are equal when both coordinates match, and `hashCode` is computed from the same two fields.
 - `practice.PointDemo` — stores a label under a `Point` in a `HashMap`, then looks it up with a new, equal `Point`.
-- `practice.TwoSum` — `twoSum`, which traverses the array once with a map from each value to its index, and `twoSumBruteForce`, which checks every pair with two nested loops.
-- `practice.GroupAnagrams` — `groupAnagrams`, which keys a map on each word's sorted letters, and `groupAnagramsPairwise`, which compares each word with the first word of every group so far.
+- `practice.TwoSumBruteForce` — `twoSum`, which checks every pair with two nested loops.
+- `practice.TwoSumMap` — `twoSum`, which traverses the array once with a map from each value to its index.
+- `practice.GroupAnagramsPairwise` — `groupAnagrams`, which compares each word with the first word of every group so far.
+- `practice.GroupAnagramsCanonicalForm` — `groupAnagrams`, which keys a map on each word's sorted letters.
 - `map.Map<K, V>`, `map.TreeMap<K, V>`, `stack.Stack<T>`, and `stack.LinkedStack<T>` — the map from the TreeMap chapter and the stack its iterator uses, copied unchanged so this code compiles and runs on its own.
 - `practice.PointTest` uses Java's own `java.util.HashMap`, because the `Point` bug only shows up in a map that hashes its keys.

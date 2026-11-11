@@ -7,6 +7,6 @@ public class GroupAnagramsCanonicalFormTest extends GroupAnagramsTest {
 
   @Override
   protected List<List<String>> groupAnagrams(String[] words) {
-    return GroupAnagrams.groupAnagrams(words);
+    return GroupAnagramsCanonicalForm.groupAnagrams(words);
   }
 }

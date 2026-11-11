@@ -5,6 +5,6 @@ public class TwoSumBruteForceTest extends TwoSumTest {
 
   @Override
   protected int[] twoSum(int[] nums, int target) {
-    return TwoSum.twoSumBruteForce(nums, target);
+    return TwoSumBruteForce.twoSum(nums, target);
   }
 }
