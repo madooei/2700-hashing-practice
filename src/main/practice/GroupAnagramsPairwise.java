@@ -1,6 +1,6 @@
 package practice;
 
-import java.util.List;
+import list.List;
 
 /** Practice problem: group anagrams by comparing each word with the first word of every group. */
 public final class GroupAnagramsPairwise {

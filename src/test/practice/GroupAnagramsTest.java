@@ -1,11 +1,9 @@
 package practice;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import list.List;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * Tests for the Group Anagrams problem. The scenarios are written once here;
@@ -24,83 +22,86 @@ public abstract class GroupAnagramsTest {
   @Test
   public void emptyInputGivesNoGroups() {
     String[] words = {};
-    List<List<String>> expected = new ArrayList<>();
-    assertEquals(normalize(expected), normalize(groupAnagrams(words)));
+    String[][] expected = {};
+    assertArrayEquals(normalize(expected), normalize(groupAnagrams(words)));
   }
 
   @Test
   public void aWordWithNoPartnerFormsAGroupOfOne() {
     String[] words = {"bat"};
-    List<List<String>> expected = new ArrayList<>();
-    expected.add(Arrays.asList("bat"));
-    assertEquals(normalize(expected), normalize(groupAnagrams(words)));
+    String[][] expected = {{"bat"}};
+    assertArrayEquals(normalize(expected), normalize(groupAnagrams(words)));
   }
 
   @Test
   public void twoAnagramsShareAGroup() {
     String[] words = {"eat", "tea"};
-    List<List<String>> expected = new ArrayList<>();
-    expected.add(Arrays.asList("eat", "tea"));
-    assertEquals(normalize(expected), normalize(groupAnagrams(words)));
+    String[][] expected = {{"eat", "tea"}};
+    assertArrayEquals(normalize(expected), normalize(groupAnagrams(words)));
   }
 
   @Test
   public void aRepeatedWordJoinsItsFirstCopy() {
     String[] words = {"tea", "tea"};
-    List<List<String>> expected = new ArrayList<>();
-    expected.add(Arrays.asList("tea", "tea"));
-    assertEquals(normalize(expected), normalize(groupAnagrams(words)));
+    String[][] expected = {{"tea", "tea"}};
+    assertArrayEquals(normalize(expected), normalize(groupAnagrams(words)));
   }
 
   @Test
   public void noTwoWordsAreAnagrams() {
     String[] words = {"cat", "dog", "cow"};
-    List<List<String>> expected = new ArrayList<>();
-    expected.add(Arrays.asList("cat"));
-    expected.add(Arrays.asList("dog"));
-    expected.add(Arrays.asList("cow"));
-    assertEquals(normalize(expected), normalize(groupAnagrams(words)));
+    String[][] expected = {{"cat"}, {"dog"}, {"cow"}};
+    assertArrayEquals(normalize(expected), normalize(groupAnagrams(words)));
   }
 
   @Test
   public void wordsWithTheSameLettersInDifferentCountsAreApart() {
     String[] words = {"aab", "abb", "bab"};
-    List<List<String>> expected = new ArrayList<>();
-    expected.add(Arrays.asList("aab"));
-    expected.add(Arrays.asList("abb", "bab"));
-    assertEquals(normalize(expected), normalize(groupAnagrams(words)));
+    String[][] expected = {{"aab"}, {"abb", "bab"}};
+    assertArrayEquals(normalize(expected), normalize(groupAnagrams(words)));
   }
 
   @Test
   public void wordsWhoseLettersHaveTheSameSumAreApart() {
     String[] words = {"ad", "bc"};
-    List<List<String>> expected = new ArrayList<>();
-    expected.add(Arrays.asList("ad"));
-    expected.add(Arrays.asList("bc"));
-    assertEquals(normalize(expected), normalize(groupAnagrams(words)));
+    String[][] expected = {{"ad"}, {"bc"}};
+    assertArrayEquals(normalize(expected), normalize(groupAnagrams(words)));
   }
 
   @Test
   public void groupsOfDifferentSizesFromMixedInput() {
     String[] words = {"eat", "tea", "tan", "ate", "nat", "bat"};
-    List<List<String>> expected = new ArrayList<>();
-    expected.add(Arrays.asList("eat", "tea", "ate"));
-    expected.add(Arrays.asList("tan", "nat"));
-    expected.add(Arrays.asList("bat"));
-    assertEquals(normalize(expected), normalize(groupAnagrams(words)));
+    String[][] expected = {{"eat", "tea", "ate"}, {"tan", "nat"}, {"bat"}};
+    assertArrayEquals(normalize(expected), normalize(groupAnagrams(words)));
   }
 
   // Puts a grouping in one standard order, so two correct groupings that
   // differ only in order compare equal: sort each group, write it as a string,
   // then sort those strings.
-  private static List<String> normalize(List<List<String>> groups) {
-    List<String> normalized = new ArrayList<>();
-    for (List<String> group : groups) {
-      List<String> sortedGroup = new ArrayList<>(group);
-      Collections.sort(sortedGroup);
-      normalized.add(sortedGroup.toString());
+  private static String[] normalize(List<List<String>> groups) {
+    String[] normalized = new String[groups.size()];
+    for (int i = 0; i < groups.size(); i++) {
+      List<String> group = groups.get(i);
+      String[] words = new String[group.size()];
+      for (int j = 0; j < group.size(); j++) {
+        words[j] = group.get(j);
+      }
+      Arrays.sort(words);
+      normalized[i] = Arrays.toString(words);
     }
-    Collections.sort(normalized);
+    Arrays.sort(normalized);
+    return normalized;
+  }
+
+  // The same standard order, for an expected grouping written as an array.
+  private static String[] normalize(String[][] groups) {
+    String[] normalized = new String[groups.length];
+    for (int i = 0; i < groups.length; i++) {
+      String[] words = Arrays.copyOf(groups[i], groups[i].length);
+      Arrays.sort(words);
+      normalized[i] = Arrays.toString(words);
+    }
+    Arrays.sort(normalized);
     return normalized;
   }
 }

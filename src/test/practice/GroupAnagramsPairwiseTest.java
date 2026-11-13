@@ -1,6 +1,6 @@
 package practice;
 
-import java.util.List;
+import list.List;
 
 /** Runs the Group Anagrams scenarios against the pairwise solution. */
 public class GroupAnagramsPairwiseTest extends GroupAnagramsTest {

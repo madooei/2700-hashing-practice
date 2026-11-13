@@ -1,6 +1,6 @@
 package practice;
 
-import java.util.List;
+import list.List;
 
 /** Practice problem: group anagrams with a map keyed on each word's sorted letters. */
 public final class GroupAnagramsCanonicalForm {
