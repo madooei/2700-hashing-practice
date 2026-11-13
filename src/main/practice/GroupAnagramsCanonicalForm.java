@@ -1,8 +1,8 @@
 package practice;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import list.ArrayList;
+import list.List;
 import map.Map;
 import map.TreeMap;
 
@@ -23,10 +23,10 @@ public final class GroupAnagramsCanonicalForm {
     for (String word : words) {
       char[] chars = word.toCharArray();
       Arrays.sort(chars);
-      String key = new String(chars);        // the sorted-letter form, e.g. "aet"
+      String key = new String(chars);  // the sorted-letter form, e.g. "aet"
 
       List<String> group = groups.get(key);
-      if (group == null) {                   // first word with this key
+      if (group == null) {  // first word with this key
         group = new ArrayList<>();
         groups.put(key, group);
       }

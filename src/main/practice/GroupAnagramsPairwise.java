@@ -1,8 +1,8 @@
 package practice;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import list.ArrayList;
+import list.List;
 
 /** Practice problem: group anagrams by comparing each word with the first word of every group. */
 public final class GroupAnagramsPairwise {
@@ -20,7 +20,8 @@ public final class GroupAnagramsPairwise {
 
     for (String word : words) {
       boolean placed = false;
-      for (List<String> group : groups) {
+      for (int i = 0; i < groups.size(); i++) {
+        List<String> group = groups.get(i);
         if (areAnagrams(word, group.get(0))) {  // compare with the representative
           group.add(word);
           placed = true;
