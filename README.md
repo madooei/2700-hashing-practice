@@ -54,7 +54,7 @@ code/
 
 Each problem's scenarios live in one abstract test class (`TwoSumTest`, `GroupAnagramsTest`). The small classes that extend it do nothing but say which class to call, so the same scenarios run against every solution without being copied.
 
-## What's here
+## Contents
 
 - `practice.TwoSumMap` — `twoSum`, which traverses the array once with a map from each value to its index.
 - `practice.GroupAnagramsPairwise` — `groupAnagrams`, which compares each word with the first word of every group so far.
