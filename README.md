@@ -21,6 +21,10 @@ code/
         TwoSumMap.java                  # one pass with a map
         GroupAnagramsPairwise.java      # compare each word with every group
         GroupAnagramsCanonicalForm.java # key a map on each word's sorted letters
+      demo/                             # one demo per solution class
+        TwoSumMapDemo.java
+        GroupAnagramsPairwiseDemo.java
+        GroupAnagramsCanonicalFormDemo.java
       list/
         List.java                       # the List ADT
         ArrayList.java                  # an array-backed List
@@ -39,14 +43,14 @@ code/
         GroupAnagramsPairwiseTest.java          # runs them against the pairwise solution
   scripts/
     test.sh                             # compile and run the JUnit tests
+    run.sh                              # compile and run one demo
 ```
 
 ## How to compile and run
 
 - `scripts/test.sh` — compiles everything and runs the full JUnit suite: every scenario is checked against every solution of each problem.
 - `scripts/test.sh practice.TwoSumMapTest` — compiles everything and runs the scenarios against one solution only. Use this while you are working on one solution and the others are still empty. The class names are listed in the layout above.
-
-Neither problem has a demo; the tests are how you check your work.
+- `scripts/run.sh demo.TwoSumMapDemo` — compiles everything and runs that one demo. Every solution class has its own demo, `<Class>Demo`.
 
 Each problem's scenarios live in one abstract test class (`TwoSumTest`, `GroupAnagramsTest`). The small classes that extend it do nothing but say which class to call, so the same scenarios run against every solution without being copied.
 
@@ -55,6 +59,7 @@ Each problem's scenarios live in one abstract test class (`TwoSumTest`, `GroupAn
 - `practice.TwoSumMap` — `twoSum`, which traverses the array once with a map from each value to its index.
 - `practice.GroupAnagramsPairwise` — `groupAnagrams`, which compares each word with the first word of every group so far.
 - `practice.GroupAnagramsCanonicalForm` — `groupAnagrams`, which keys a map on each word's sorted letters.
+- `demo.TwoSumMapDemo`, `demo.GroupAnagramsPairwiseDemo`, and `demo.GroupAnagramsCanonicalFormDemo` — one demo per solution class, each on the example the notes trace.
 - `list.List<T>` and `list.ArrayList<T>` — the List ADT and its array-backed implementation. Both Group Anagrams solutions return their groups as lists.
 - `map.Map<K, V>`, `map.TreeMap<K, V>`, `stack.Stack<T>`, and `stack.LinkedStack<T>` — the map from the TreeMap chapter and the stack its iterator uses.
 
